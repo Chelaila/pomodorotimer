@@ -1,0 +1,129 @@
+:root {
+  /* Colores principales */
+  --color-primary-100: #e6f0f5;
+  --color-primary-200: #cce1eb;
+  --color-primary-300: #b3d2e1;
+  --color-primary-400: #99c3d7;
+  --color-primary-500: #0F8B8D;
+  --color-primary-600: #0d7a7c;
+  --color-primary-700: #0b696b;
+  --color-primary-800: #09585a;
+  --color-primary-900: #074749;
+
+  /* Colores secundarios */
+  --color-secondary-100: #f5f0f5;
+  --color-secondary-200: #ebe1eb;
+  --color-secondary-300: #e1d2e1;
+  --color-secondary-400: #d7c3d7;
+  --color-secondary-500: #143642;
+  --color-secondary-600: #12303a;
+  --color-secondary-700: #102a32;
+  --color-secondary-800: #0e242a;
+  --color-secondary-900: #0c1e22;
+
+  /* Colores de acento */
+  --color-accent-100: #fdf5ed;
+  --color-accent-200: #fbe6d1;
+  --color-accent-300: #f9d7b5;
+  --color-accent-400: #f7c899;
+  --color-accent-500: #EC9A29;
+  --color-accent-600: #d48b25;
+  --color-accent-700: #bc7c21;
+  --color-accent-800: #a46d1d;
+  --color-accent-900: #8c5e19;
+
+  /* Colores de error */
+  --color-error-100: #fdedec;
+  --color-error-200: #fbdad8;
+  --color-error-300: #f9c7c4;
+  --color-error-400: #f7b4b0;
+  --color-error-500: #A8201A;
+  --color-error-600: #971d17;
+  --color-error-700: #861a14;
+  --color-error-800: #751711;
+  --color-error-900: #64140e;
+
+  /* Colores neutros */
+  --color-neutral-100: #f7f5f8;
+  --color-neutral-200: #efebf1;
+  --color-neutral-300: #e7e1ea;
+  --color-neutral-400: #dfd7e3;
+  --color-neutral-500: #DAD2D8;
+  --color-neutral-600: #c4bdc2;
+  --color-neutral-700: #aea8ac;
+  --color-neutral-800: #989396;
+  --color-neutral-900: #827e80;
+
+  /* Estados */
+  --color-success: var(--color-primary-500);
+  --color-warning: var(--color-accent-500);
+  --color-error: var(--color-error-500);
+  --color-info: var(--color-secondary-500);
+
+  /* Fondos */
+  --bg-primary: var(--color-neutral-100);
+  --bg-secondary: var(--color-neutral-200);
+  --bg-tertiary: var(--color-neutral-300);
+
+  /* Textos */
+  --text-primary: var(--color-secondary-500);
+  --text-secondary: var(--color-secondary-700);
+  --text-tertiary: var(--color-neutral-600);
+  --text-inverse: var(--color-neutral-100);
+
+  /* Bordes */
+  --border-light: var(--color-neutral-300);
+  --border-medium: var(--color-neutral-400);
+  --border-dark: var(--color-neutral-500);
+
+  /* Sombras */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Tema oscuro */
+[data-theme="dark"] {
+  --bg-primary: var(--color-secondary-900);
+  --bg-secondary: var(--color-secondary-800);
+  --bg-tertiary: var(--color-secondary-700);
+
+  --text-primary: var(--color-neutral-100);
+  --text-secondary: var(--color-neutral-300);
+  --text-tertiary: var(--color-neutral-500);
+  --text-inverse: var(--color-secondary-900);
+
+  --border-light: var(--color-secondary-700);
+  --border-medium: var(--color-secondary-600);
+  --border-dark: var(--color-secondary-500);
+}
+
+/* Clases de utilidad para colores */
+.bg-primary { background-color: var(--color-primary-500); }
+.bg-secondary { background-color: var(--color-secondary-500); }
+.bg-accent { background-color: var(--color-accent-500); }
+.bg-neutral { background-color: var(--color-neutral-500); }
+.bg-error { background-color: var(--color-error-500); }
+
+.text-primary { color: var(--color-primary-500); }
+.text-secondary { color: var(--color-secondary-500); }
+.text-accent { color: var(--color-accent-500); }
+.text-neutral { color: var(--color-neutral-500); }
+.text-error { color: var(--color-error-500); }
+
+.border-primary { border-color: var(--color-primary-500); }
+.border-secondary { border-color: var(--color-secondary-500); }
+.border-accent { border-color: var(--color-accent-500); }
+.border-neutral { border-color: var(--color-neutral-500); }
+.border-error { border-color: var(--color-error-500); }
+
+/* Estados */
+.bg-success { background-color: var(--color-success); }
+.bg-warning { background-color: var(--color-warning); }
+.bg-error { background-color: var(--color-error); }
+.bg-info { background-color: var(--color-info); }
+
+.text-success { color: var(--color-success); }
+.text-warning { color: var(--color-warning); }
+.text-error { color: var(--color-error); }
+.text-info { color: var(--color-info); } 

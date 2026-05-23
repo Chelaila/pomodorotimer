@@ -1,0 +1,30 @@
+{
+  "name": "pomodoro-timer",
+  "version": "1.0.0",
+  "description": "Pomodoro Timer Application",
+  "scripts": {
+    "start": "nest start",
+    "dev": "nest start --watch",
+    "build": "nest build",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.0",
+    "@nestjs/testing": "^11.0.0",
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.0.20",
+    "@nestjs/core": "^11.0.20",
+    "@nestjs/event-emitter": "^3.0.1",
+    "@nestjs/platform-express": "^11.0.20",
+    "@nestjs/typeorm": "^11.0.0",
+    "@types/node": "^22.14.1",
+    "@types/uuid": "^10.0.0",
+    "mysql2": "^3.14.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.22",
+    "typescript": "^5.8.3",
+    "uuid": "^11.1.0"
+  }
+}

@@ -1,0 +1,40 @@
+.flower-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.flower {
+  position: absolute;
+  object-fit: contain;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+/* Trayectoria recta con leve ondulación vertical */
+@keyframes windFlowStraight {
+  0%   { transform: translateX(-200px) translateY(0px)    rotate(-5deg); }
+  25%  { transform: translateX(25vw)   translateY(-18px)  rotate(1deg);  }
+  55%  { transform: translateX(55vw)   translateY(12px)   rotate(-2deg); }
+  80%  { transform: translateX(80vw)   translateY(-8px)   rotate(3deg);  }
+  100% { transform: translateX(calc(100vw + 200px)) translateY(4px) rotate(-4deg); }
+}
+
+/* Trayectoria que deriva levemente hacia arriba */
+@keyframes windFlowUp {
+  0%   { transform: translateX(-200px) translateY(0px)    rotate(-8deg); }
+  35%  { transform: translateX(35vw)   translateY(-28px)  rotate(4deg);  }
+  70%  { transform: translateX(70vw)   translateY(-42px)  rotate(-3deg); }
+  100% { transform: translateX(calc(100vw + 200px)) translateY(-22px) rotate(-6deg); }
+}
+
+/* Trayectoria que deriva levemente hacia abajo */
+@keyframes windFlowDown {
+  0%   { transform: translateX(-200px) translateY(0px)   rotate(6deg);  }
+  40%  { transform: translateX(40vw)   translateY(24px)  rotate(-4deg); }
+  75%  { transform: translateX(75vw)   translateY(36px)  rotate(5deg);  }
+  100% { transform: translateX(calc(100vw + 200px)) translateY(18px) rotate(7deg); }
+}
