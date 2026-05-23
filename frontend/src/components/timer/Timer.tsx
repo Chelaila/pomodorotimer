@@ -145,44 +145,48 @@ const Timer: React.FC<TimerProps> = ({ activeConfig, currentTask, onTimeEnd }) =
     alarmIntervalRef.current = setInterval(playAlarm, 1000);
   }, [notificationPermission, currentTask]);
 
-  // Cuenta regresiva con requestAnimationFrame para mayor precisión
+  // Cuenta regresiva con setInterval (sigue corriendo en pestañas inactivas, throttled a ~1s)
+  // + setTimeout programado al instante exacto del fin para disparar la alarma sin depender del tick
   useEffect(() => {
-    let animationFrameId: number;
-
-    const updateTimer = () => {
-      if (!startTimeRef.current || !isActive) return;
-
-      const currentTime = performance.now();
-      const elapsed = Math.floor((currentTime - startTimeRef.current) / 1000);
-      const expectedTime = Math.max(0, expectedTimeRef.current - elapsed);
-
-      if (expectedTime !== timeLeft) {
-        setTimeLeft(expectedTime);
-      }
-
-      if (expectedTime === 0) {
-        setIsActive(false);
-        handleAlarm();
-        onTimeEnd();
-        return;
-      }
-
-      animationFrameId = requestAnimationFrame(updateTimer);
-    };
-
-    if (isActive && timeLeft > 0) {
-      if (!startTimeRef.current) {
-        startTimeRef.current = performance.now();
-      }
-      animationFrameId = requestAnimationFrame(updateTimer);
-    } else {
-      startTimeRef.current = null;
+    if (!isActive || expectedTimeRef.current <= 0) {
+      return;
     }
 
-    return () => {
-      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    if (!startTimeRef.current) {
+      startTimeRef.current = performance.now();
+    }
+
+    const endTimeMs = startTimeRef.current + expectedTimeRef.current * 1000;
+
+    const tick = () => {
+      const remainingMs = Math.max(0, endTimeMs - performance.now());
+      const remainingSec = Math.ceil(remainingMs / 1000);
+      setTimeLeft((prev) => (prev !== remainingSec ? remainingSec : prev));
     };
-  }, [isActive, timeLeft, onTimeEnd, handleAlarm]);
+
+    tick();
+    const intervalId = setInterval(tick, 500);
+
+    const alarmTimeoutId = setTimeout(() => {
+      setTimeLeft(0);
+      setIsActive(false);
+      startTimeRef.current = null;
+      handleAlarm();
+      onTimeEnd();
+    }, Math.max(0, endTimeMs - performance.now()));
+
+    // Recalibrar al volver a la pestaña por si el navegador throttled el tick
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') tick();
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    return () => {
+      clearInterval(intervalId);
+      clearTimeout(alarmTimeoutId);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
+  }, [isActive, onTimeEnd, handleAlarm]);
 
   const handleStart = useCallback(() => {
     setIsActive(true);
