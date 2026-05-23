@@ -2,6 +2,11 @@
 
 Full-stack Pomodoro Timer application with task management, configurable timer presets, YouTube playlist integration and theme customization.
 
+## Preview
+
+<!-- Guardá los screenshots en docs/preview/ y referencialos acá -->
+![Pomodoro Timer preview](docs/preview/preview.jpg)
+
 ## Stack
 
 ### Frontend
@@ -12,6 +17,15 @@ Full-stack Pomodoro Timer application with task management, configurable timer p
 - **Axios** (HTTP client)
 - **Nginx** (production static serving via Docker)
 
+<!-- Guardá los logos en docs/stack/ y referencialos acá -->
+<p align="left">
+  <img src="docs/stack/react.png"      alt="React"      height="48" />
+  <img src="docs/stack/typescript.png" alt="TypeScript" height="48" />
+  <img src="docs/stack/vite.png"       alt="Vite"       height="48" />
+  <img src="docs/stack/tailwind.png"   alt="Tailwind"   height="48" />
+  <img src="docs/stack/nginx.png"      alt="Nginx"      height="48" />
+</p>
+
 ### Backend
 - **NestJS 11** (Node.js framework)
 - **TypeScript 5**
@@ -20,96 +34,21 @@ Full-stack Pomodoro Timer application with task management, configurable timer p
 - **@nestjs/event-emitter** (in-app events)
 - **uuid**
 
+<p align="left">
+  <img src="docs/stack/nestjs.png"     alt="NestJS"     height="48" />
+  <img src="docs/stack/typescript.png" alt="TypeScript" height="48" />
+  <img src="docs/stack/typeorm.png"    alt="TypeORM"    height="48" />
+  <img src="docs/stack/mysql.png"      alt="MySQL"      height="48" />
+</p>
+
 ### Infrastructure
 - **Docker** + **Docker Compose** (frontend, backend, MySQL)
 - **MySQL 8** persisted via named volume
 
-## Project Structure
-
-```
-pomodorotimer/
-├── docker-compose.yml          # Orchestrates frontend + backend + mysql
-│
-├── backend/                    # NestJS API (port 3001)
-│   ├── Dockerfile
-│   ├── nest-cli.json
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── tsconfig.build.json
-│   ├── docker/                 # Backend-specific Docker assets
-│   ├── sql/                    # Schema bootstrap scripts
-│   │   ├── create_tasks_table.sql
-│   │   └── create_timer_configs_table.sql
-│   ├── test/                   # e2e / unit tests
-│   └── src/
-│       ├── main.ts             # Bootstrap
-│       ├── app.module.ts
-│       ├── app.controller.ts
-│       ├── app.service.ts
-│       ├── config/             # TypeORM / app configuration
-│       ├── seeder/             # DB seeders
-│       ├── tasks/              # Task CRUD module
-│       │   ├── entities/
-│       │   ├── tasks.controller.ts
-│       │   ├── tasks.module.ts
-│       │   ├── tasks.service.ts
-│       │   └── task.interface.ts
-│       ├── timer/              # Timer + timer config module
-│       │   ├── entities/
-│       │   ├── timer.controller.ts
-│       │   ├── timer.service.ts
-│       │   ├── timer-config.controller.ts
-│       │   ├── timer-config.service.ts
-│       │   └── timer.module.ts
-│       ├── sessions/           # Pomodoro session tracking
-│       │   ├── entities/
-│       │   ├── sessions.controller.ts
-│       │   ├── sessions.module.ts
-│       │   └── sessions.service.ts
-│       └── playlist/           # YouTube playlist module
-│           ├── entities/
-│           ├── playlist.controller.ts
-│           ├── playlist.module.ts
-│           └── playlist.service.ts
-│
-└── frontend/                   # React + Vite SPA (port 80 in Docker)
-    ├── index.html
-    ├── nginx.conf
-    ├── package.json
-    ├── tsconfig.json
-    ├── vite.config.ts
-    ├── tailwind.config.cjs
-    ├── postcss.config.cjs
-    ├── docker/                 # Nginx Dockerfile
-    ├── public/
-    └── src/
-        ├── main.tsx
-        ├── App.tsx
-        ├── routes.tsx
-        ├── pages/
-        │   ├── HomePage.tsx
-        │   └── TimerConfigPage.tsx
-        ├── components/
-        │   ├── home/
-        │   ├── layout/
-        │   ├── timer/
-        │   ├── task/
-        │   ├── config/
-        │   ├── theme/
-        │   └── youtube/
-        ├── services/           # API clients (axios)
-        │   ├── api.ts
-        │   ├── taskService.ts
-        │   ├── timerService.ts
-        │   └── themeService.ts
-        ├── contexts/
-        ├── hooks/
-        ├── interfaces/
-        ├── types/
-        ├── constants/
-        ├── theme/
-        └── styles/
-```
+<p align="left">
+  <img src="docs/stack/docker.png" alt="Docker" height="48" />
+  <img src="docs/stack/mysql.png"  alt="MySQL"  height="48" />
+</p>
 
 ## Modules
 
@@ -169,3 +108,11 @@ MySQL schema is bootstrapped via the SQL files in `backend/sql/`:
 - `create_timer_configs_table.sql`
 
 TypeORM entities live next to each module under `src/<module>/entities/`.
+
+## Assets
+
+```
+docs/
+├── preview/    # Screenshots de la app (preview.png, etc.)
+└── stack/      # Logos del stack (react.png, nestjs.png, mysql.png, ...)
+```
